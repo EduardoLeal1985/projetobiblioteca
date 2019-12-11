@@ -36,6 +36,7 @@ target 'biblioteca' do
 
 
 
+
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   target 'bibliotecaTests' do

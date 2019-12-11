@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {
@@ -13,6 +14,25 @@ import {
 } from './styles';
 
 export default class Main extends Component {
+  static propTypes = {
+    navigation: PropTypes.shape({ navigate: PropTypes.func }).isRequired,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  handleEmprestimo = () => {
+    const { navigation } = this.props;
+    navigation.navigate('Emprestimo');
+  };
+
+  handleDevolucao = () => {
+    const { navigation } = this.props;
+    navigation.navigate('Devolucao');
+  };
+
   static navigationOptions = {
     title: 'Home',
   };
@@ -27,11 +47,11 @@ export default class Main extends Component {
           }}
         />
         <Form>
-          <SubmitButton1>
+          <SubmitButton1 onPress={this.handleEmprestimo}>
             <Icon name="book-plus" size={40} color="#333" />
             <Text>Emprestar</Text>
           </SubmitButton1>
-          <SubmitButton2>
+          <SubmitButton2 onPress={this.handleDevolucao}>
             <Icon name="reply" size={40} color="#333" />
             <Text>Devolver</Text>
           </SubmitButton2>
